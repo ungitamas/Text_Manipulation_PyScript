@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Simple Text Manipulation using PyScript</h1>
+
+<p>Input Text</p>
+
+<textarea name="input_text" id="input_text" placeholder="Enter your text...."></textarea>
+
+<br>
+
+<button id="modify1" type="button" class="button is-primary" pys-onClick="modify1">Modify1</button>
+<button id="modify2" type="button" class="button is-primary" pys-onClick="modify2">Modify2</button>
+<button id="modify3" type="button" class="button is-primary" pys-onClick="modify3">Modify3</button>
+<button id="clear" type="button" class="button is-danger" pys-onClick="clear">Clear</button>
+
+<p>Output:</p>
+
+<h1 id = 'output1'></h1>
+<h1 id = 'output2'></h1>
+<h1 id = 'output3'></h1>
+    
+<py-script>
+
+input_text = Element("input_text")    
+
+op1 = Element("output1")
+op2 = Element("output2")
+op3 = Element("output3")
+
+def clear(*args, **kwargs):
+    input_text.clear()
+
+def modify1(*args, **kwargs):
+    number = len(input_text.value)
+    op1.write(number)
+
+def modify2(*args, **kwargs):
+    szoveg = input_text.value.upper()
+    op2.write(szoveg)
+
+def modify3(*args, **kwargs):
+    szoveg = input_text.value.swapcase()
+    op3.write(szoveg)
+
+</body>
+
+</html>
