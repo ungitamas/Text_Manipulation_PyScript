@@ -23,6 +23,9 @@
 <button id="modify3" type="button" class="button is-primary" pys-onClick="modify3">Modify3</button>
 <button id="modify4" type="button" class="button is-primary" pys-onClick="modify4">Modify4</button>
 <button id="modify5" type="button" class="button is-primary" pys-onClick="modify5">Modify5</button>
+<button id="modify6" type="button" class="button is-primary" pys-onClick="modify6">Modify6</button>
+<button id="modify7" type="button" class="button is-primary" pys-onClick="modify7">Modify7</button>
+<button id="modify8" type="button" class="button is-primary" pys-onClick="modify8">Modify8</button>
 <button id="clear" type="button" class="button is-danger" pys-onClick="clear">Clear</button>
 
 <p>Output:</p>
@@ -32,6 +35,9 @@
 <h1 id = 'output3'></h1>
 <h1 id = 'output4'></h1>
 <h1 id = 'output5'></h1>
+<h1 id = 'output6'></h1>
+<h1 id = 'output7'></h1>
+<h1 id = 'output8'></h1>
     
 <py-script>
 
@@ -42,13 +48,16 @@ op2 = Element("output2")
 op3 = Element("output3")
 op4 = Element("output4")
 op5 = Element("output5")
+op6 = Element("output6")
+op7 = Element("output7")
+op8 = Element("output8")
 
 def clear(*args, **kwargs):
     input_text.clear()
 
 def modify1(*args, **kwargs):
     number = len(input_text.value)
-    op1.write(number)
+    op1.write(f"The text is {number} characters.")
 
 def modify2(*args, **kwargs):
     szoveg = input_text.value.upper()
@@ -66,6 +75,34 @@ def modify5(*args, **kwargs):
     szoveg = input_text.value[::-1]
     op5.write(szoveg)
 
+def modify6(*args, **kwargs):
+    szoveg = input_text.value
+    uj_szoveg = ""
+    for c in szoveg:
+        if c != " ":
+            uj_szoveg += c
+    op6.write(uj_szoveg)
+
+def modify7(*args, **kwargs):
+    szoveg = input_text.value
+    vowels = "aáeéiíoóöőuúüű"
+    uj_szoveg = ""
+    for c in szoveg:
+        if c.lower() not in vowels:
+            uj_szoveg += c
+    op7.write(uj_szoveg)
+
+def modify8(*args, **kwargs):
+    szoveg = input_text.value
+    uj_szoveg = ""
+    for i in range(len(szoveg)):
+        if i % 2 == 0:
+            uj_szoveg += szoveg[i].upper()
+        else:
+            uj_szoveg += szoveg[i].lower()
+    op8.write(uj_szoveg)
+
+</py-script>
 </body>
 
 </html>
